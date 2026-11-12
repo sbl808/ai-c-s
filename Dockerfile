@@ -30,6 +30,13 @@ RUN git clone --depth 1 \
       https://github.com/ffmpegwasm/ffmpeg.wasm.git \
       /src/ffmpeg-wasm
 
+# Remove the unavailable postproc linker dependency
+# from the build-local wrapper script only.
+RUN sed -i 's/-lpostproc//g' \
+      /src/ffmpeg-wasm/build/ffmpeg-wasm.sh && \
+    ! grep -q -- '-lpostproc' \
+      /src/ffmpeg-wasm/build/ffmpeg-wasm.sh
+
 # Copy the custom configuration into the build image.
 COPY build/ffmpeg-config.sh /src/ffmpeg-config.sh
 
