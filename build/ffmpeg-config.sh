@@ -44,9 +44,8 @@ FFMPEG_CUSTOM_CONFIG_FLAGS=(
   # Local browser virtual filesystem only
   --enable-protocol=file
 
-  # Keep unnecessary subsystems disabled
+  # Keep network access disabled.
+  # Keep avdevice, avfilter and swscale libraries enabled
+  # because the upstream ffmpeg-wasm linker references them.
   --disable-network
-  --disable-avdevice
-  --disable-avfilter
-  --disable-swscale
 )
