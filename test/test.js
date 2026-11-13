@@ -103,7 +103,8 @@
       setStatus("FFmpeg ဖြင့် AAC Audio ထုတ်ယူနေပါသည်...");
       const exitCode = core.exec(
         "-i", inputPath,
-        "-map", "0:a:0",
+        "-filter_complex", "[0:a:0]anull[outa]",
+        "-map", "[outa]",
         "-vn",
         "-c:a", "aac",
         "-f", "adts",
