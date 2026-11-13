@@ -38,6 +38,8 @@ FFMPEG_CUSTOM_CONFIG_FLAGS=(
   --enable-parser=ac3
 
   # Audio filters
+  --enable-filter=abuffer
+  --enable-filter=abuffersink
   --enable-filter=anull
 
   # AAC output
